@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="620" viewBox="0 0 1180 620">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="40" y="48" font-family="Arial, Microsoft YaHei, sans-serif" font-size="26" font-weight="700" fill="#111827" text-anchor="start">Officially Documented Agentic / AI Analytics Evidence</text>
+<text x="40" y="78" font-family="Arial, Microsoft YaHei, sans-serif" font-size="13" font-weight="400" fill="#4b5563" text-anchor="start">This is an evidence table, not a scored capability ranking. Each entry comes from official vendor documentation or announcements.</text>
+<rect x="40" y="105" width="1100" height="36" fill="#e5e7eb"/>
+<text x="50" y="129" font-family="Arial, Microsoft YaHei, sans-serif" font-size="14" font-weight="700" fill="#111827" text-anchor="start">Vendor</text>
+<text x="255" y="129" font-family="Arial, Microsoft YaHei, sans-serif" font-size="14" font-weight="700" fill="#111827" text-anchor="start">Officially documented evidence</text>
+<text x="825" y="129" font-family="Arial, Microsoft YaHei, sans-serif" font-size="14" font-weight="700" fill="#111827" text-anchor="start">Source type</text>
+<rect x="40" y="142" width="1100" height="66" fill="#ffffff" stroke="#e5e7eb"/>
+<text x="50" y="170" font-family="Arial, Microsoft YaHei, sans-serif" font-size="15" font-weight="700" fill="#111827" text-anchor="start">Microsoft</text>
+<text x="255" y="164" font-family="Arial, Microsoft YaHei, sans-serif" font-size="13" font-weight="400" fill="#111827" text-anchor="start">Copilot in Power BI</text>
+<text x="255" y="186" font-family="Arial, Microsoft YaHei, sans-serif" font-size="13" font-weight="400" fill="#374151" text-anchor="start">Fabric integration; semantic models / Fabric data agents</text>
+<text x="825" y="174" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#374151" text-anchor="start">Microsoft Power BI blog + Microsoft Learn</text>
+<rect x="40" y="208" width="1100" height="66" fill="#f9fafb" stroke="#e5e7eb"/>
+<text x="50" y="236" font-family="Arial, Microsoft YaHei, sans-serif" font-size="15" font-weight="700" fill="#111827" text-anchor="start">Oracle</text>
+<text x="255" y="230" font-family="Arial, Microsoft YaHei, sans-serif" font-size="13" font-weight="400" fill="#111827" text-anchor="start">Fusion Data Intelligence</text>
+<text x="255" y="252" font-family="Arial, Microsoft YaHei, sans-serif" font-size="13" font-weight="400" fill="#374151" text-anchor="start">Oracle Analytics AI Assistant; Data Actions</text>
+<text x="825" y="240" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#374151" text-anchor="start">Oracle Analytics official blog/docs</text>
+<rect x="40" y="274" width="1100" height="66" fill="#ffffff" stroke="#e5e7eb"/>
+<text x="50" y="302" font-family="Arial, Microsoft YaHei, sans-serif" font-size="15" font-weight="700" fill="#111827" text-anchor="start">Google</text>
+<text x="255" y="296" font-family="Arial, Microsoft YaHei, sans-serif" font-size="13" font-weight="400" fill="#111827" text-anchor="start">Conversational Analytics</text>
+<text x="255" y="318" font-family="Arial, Microsoft YaHei, sans-serif" font-size="13" font-weight="400" fill="#374151" text-anchor="start">Gemini in Looker; semantic modeling layer</text>
+<text x="825" y="306" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#374151" text-anchor="start">Google Cloud official blog/docs</text>
+<rect x="40" y="340" width="1100" height="66" fill="#f9fafb" stroke="#e5e7eb"/>
+<text x="50" y="368" font-family="Arial, Microsoft YaHei, sans-serif" font-size="15" font-weight="700" fill="#111827" text-anchor="start">Salesforce/Tableau</text>
+<text x="255" y="362" font-family="Arial, Microsoft YaHei, sans-serif" font-size="13" font-weight="400" fill="#111827" text-anchor="start">Tableau Agentforce</text>
+<text x="255" y="384" font-family="Arial, Microsoft YaHei, sans-serif" font-size="13" font-weight="400" fill="#374151" text-anchor="start">metadata/semantics layer; Data 360 governance</text>
+<text x="825" y="372" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#374151" text-anchor="start">Salesforce/Tableau official pages</text>
+<rect x="40" y="406" width="1100" height="66" fill="#ffffff" stroke="#e5e7eb"/>
+<text x="50" y="434" font-family="Arial, Microsoft YaHei, sans-serif" font-size="15" font-weight="700" fill="#111827" text-anchor="start">Qlik</text>
+<text x="255" y="428" font-family="Arial, Microsoft YaHei, sans-serif" font-size="13" font-weight="400" fill="#111827" text-anchor="start">Agentic experience</text>
+<text x="255" y="450" font-family="Arial, Microsoft YaHei, sans-serif" font-size="13" font-weight="400" fill="#374151" text-anchor="start">conversational analytics; guided authoring; automation</text>
+<text x="825" y="438" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#374151" text-anchor="start">Qlik official press release</text>
+<rect x="40" y="472" width="1100" height="66" fill="#f9fafb" stroke="#e5e7eb"/>
+<text x="50" y="500" font-family="Arial, Microsoft YaHei, sans-serif" font-size="15" font-weight="700" fill="#111827" text-anchor="start">ThoughtSpot</text>
+<text x="255" y="494" font-family="Arial, Microsoft YaHei, sans-serif" font-size="13" font-weight="400" fill="#111827" text-anchor="start">Spotter</text>
+<text x="255" y="516" font-family="Arial, Microsoft YaHei, sans-serif" font-size="13" font-weight="400" fill="#374151" text-anchor="start">Agentic MCP Server; Agentic Semantic Layer</text>
+<text x="825" y="504" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#374151" text-anchor="start">ThoughtSpot official press releases</text>
+<text x="40" y="585" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#991b1b" text-anchor="start">Use this visual to show evidence presence only. Do not convert it into vendor scores without an official scoring dataset.</text>
+</svg>

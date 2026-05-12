@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>从仪表盘到 ERP 决策智能 | Topic 2 中文教学网站</title>
+  <meta name="description" content="基于最终报告和最终 28 页 PPT 的中文教学网站：Microsoft Power BI/Fabric vs Qlik Cloud Analytics/Qlik Talend。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Outfit:wght@500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#0a1020; --muted:#526078; --paper:#f3f6fb; --panel:#fff;
+      --line:#d6deeb; --blue:#2554d6; --blue2:#dfe8ff; --teal:#0d9488;
+      --teal2:#ddf7f3; --amber:#c66a00; --red:#b42318; --slate:#152033;
+      --shadow:0 24px 80px rgba(21,32,51,.14);
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0; color:var(--ink); font-family:"Noto Sans SC", sans-serif; background:
+      radial-gradient(circle at 12% 8%, rgba(37,84,214,.12), transparent 26rem),
+      radial-gradient(circle at 88% 18%, rgba(13,148,136,.12), transparent 28rem),
+      linear-gradient(90deg, rgba(21,32,51,.045) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(21,32,51,.045) 1px, transparent 1px),
+      var(--paper); background-size:auto, auto, 42px 42px, 42px 42px;
+    }
+    img { max-width:100%; display:block; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(1220px, calc(100% - 36px)); margin:0 auto; }
+    .nav { position:sticky; top:0; z-index:40; background:rgba(243,246,251,.88); backdrop-filter:blur(18px); border-bottom:1px solid var(--line); }
+    .nav-inner { min-height:68px; display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .brand { font-family:Outfit, sans-serif; font-weight:900; letter-spacing:.02em; }
+    .links { display:flex; flex-wrap:wrap; gap:6px; font-size:13px; color:var(--muted); }
+    .links a { padding:8px 10px; border:1px solid transparent; border-radius:999px; }
+    .links a:hover { background:white; border-color:var(--line); }
+    .hero { padding:68px 0 34px; }
+    .hero-grid { display:grid; grid-template-columns:1fr .94fr; gap:24px; align-items:stretch; }
+    .kicker { color:var(--blue); font-family:Outfit, sans-serif; font-size:12px; letter-spacing:.16em; text-transform:uppercase; font-weight:900; }
+    h1 { font-family:Outfit, "Noto Sans SC"; font-size:clamp(42px, 6.8vw, 86px); line-height:.94; margin:14px 0 18px; letter-spacing:-.045em; }
+    .lead { font-size:19px; color:#263349; line-height:1.86; max-width:780px; }
+    .hero-media { background:rgba(255,255,255,.9); border:1px solid var(--line); border-radius:30px; padding:16px; box-shadow:var(--shadow); display:grid; gap:12px; }
+    .hero-media img { border-radius:20px; border:1px solid var(--line); background:white; }
+    .tag-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+    .tag { background:white; border:1px solid var(--line); border-radius:999px; padding:10px 13px; color:#344056; font-size:14px; }
+    .tag b { color:var(--blue); }
+    section { padding:58px 0; }
+    .section-head { display:grid; grid-template-columns:.72fr 1.28fr; gap:28px; align-items:end; margin-bottom:24px; }
+    .eyebrow { color:var(--teal); font-family:Outfit, sans-serif; font-size:12px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; margin-bottom:10px; }
+    .section-head h2 { font-family:Outfit, "Noto Sans SC"; font-size:clamp(30px, 4.4vw, 54px); line-height:1.03; margin:0; letter-spacing:-.035em; }
+    .section-head p { color:var(--muted); line-height:1.85; margin:0; }
+    .brief-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:18px; }
+    .panel { background:rgba(255,255,255,.92); border:1px solid var(--line); border-radius:26px; padding:20px; box-shadow:0 14px 45px rgba(21,32,51,.08); }
+    .panel h3 { margin:0 0 10px; font-size:24px; font-family:Outfit, "Noto Sans SC"; }
+    .panel p, .panel li { color:#384761; line-height:1.75; }
+    .mini-grid { display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; }
+    .mini { background:#111c31; color:white; border-radius:18px; padding:14px; min-height:130px; }
+    .mini b { color:#b9d5ff; display:block; margin-bottom:8px; }
+    .slide-shot { border:1px solid var(--line); border-radius:18px; overflow:hidden; background:white; }
+    .report-map { display:grid; grid-template-columns:repeat(2, 1fr); gap:14px; }
+    .report-card { background:white; border:1px solid var(--line); border-radius:22px; padding:18px; box-shadow:0 14px 45px rgba(21,32,51,.07); }
+    .report-card h3 { margin:4px 0 8px; font-size:20px; }
+    .report-card .no { font-family:Outfit, sans-serif; color:var(--teal); font-weight:900; font-size:12px; letter-spacing:.08em; text-transform:uppercase; }
+    .report-card p { color:#3b4a63; line-height:1.72; font-size:14px; }
+    .report-card .why { background:#f8fbff; border:1px solid var(--line); border-radius:16px; padding:10px; }
+    .simple-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; }
+    .simple-card { background:#111c31; color:white; border-radius:22px; padding:18px; min-height:170px; }
+    .simple-card b { display:block; color:#b9d5ff; margin-bottom:8px; font-family:Outfit, "Noto Sans SC"; }
+    .simple-card p { color:#d7dfeb; line-height:1.72; margin:0; font-size:14px; }
+    .flow { display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; }
+    .flow-step { background:white; border:1px solid var(--line); border-radius:20px; padding:16px; }
+    .flow-step b { color:var(--blue); font-family:Outfit, "Noto Sans SC"; }
+    .flow-step p { color:var(--muted); line-height:1.65; font-size:14px; }
+    .concept-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; }
+    .concept { background:white; border:1px solid var(--line); border-radius:22px; padding:18px; position:relative; overflow:hidden; min-height:250px; }
+    .concept::before { content:""; position:absolute; inset:0 0 auto; height:7px; background:linear-gradient(90deg, var(--blue), var(--teal), var(--amber)); }
+    .concept h3 { margin:6px 0 4px; font-size:19px; }
+    .concept .en { font-family:Outfit, sans-serif; color:var(--blue); font-size:13px; font-weight:700; }
+    .concept p { color:#3b4a63; line-height:1.72; font-size:14px; }
+    .ppt-ref { display:inline-block; margin-top:8px; background:var(--blue2); color:#193d9d; border-radius:999px; padding:6px 9px; font-size:12px; font-family:Outfit, sans-serif; }
+    .product-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .product { background:white; border:1px solid var(--line); border-radius:28px; padding:18px; box-shadow:var(--shadow); }
+    .product.microsoft { border-top:10px solid var(--blue); }
+    .product.qlik { border-top:10px solid var(--teal); }
+    .product-header { display:flex; justify-content:space-between; gap:14px; align-items:start; margin-bottom:12px; }
+    .badge { font-family:Outfit, sans-serif; border:1px solid var(--line); border-radius:999px; padding:8px 10px; color:var(--muted); font-size:12px; white-space:nowrap; }
+    .product h3 { font-family:Outfit, "Noto Sans SC"; font-size:29px; margin:0; letter-spacing:-.02em; }
+    .product p { color:var(--muted); line-height:1.75; }
+    .product img { border-radius:20px; border:1px solid var(--line); margin:14px 0; background:#fff; }
+    .point-list { display:grid; gap:8px; margin-top:12px; }
+    .point { display:grid; grid-template-columns:138px 1fr; gap:10px; background:#f8fbff; border:1px solid var(--line); border-radius:16px; padding:10px; color:#344056; line-height:1.55; }
+    .point b { color:var(--ink); font-family:Outfit, "Noto Sans SC"; }
+    .matrix { width:100%; border-collapse:collapse; background:white; border:1px solid var(--line); border-radius:24px; overflow:hidden; box-shadow:0 14px 42px rgba(21,32,51,.08); }
+    .matrix th { background:#121d31; color:white; text-align:left; padding:15px; font-size:14px; }
+    .matrix td { border-top:1px solid var(--line); padding:15px; vertical-align:top; line-height:1.72; font-size:14px; }
+    .matrix tr:nth-child(odd) td { background:#fbfdff; }
+    .image-row { display:grid; grid-template-columns:1.25fr .75fr; gap:16px; }
+    .caption { color:var(--muted); font-size:13px; line-height:1.62; margin-top:9px; }
+    .tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+    .tab { border:1px solid var(--line); background:white; border-radius:999px; padding:10px 14px; cursor:pointer; color:var(--muted); }
+    .tab.active { background:var(--ink); color:white; border-color:var(--ink); }
+    .slide-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
+    .slide-card { background:white; border:1px solid var(--line); border-radius:22px; overflow:hidden; box-shadow:0 12px 35px rgba(21,32,51,.09); }
+    .slide-card img { aspect-ratio:16/9; object-fit:cover; width:100%; border-bottom:1px solid var(--line); }
+    .slide-body { padding:15px; }
+    .slide-body b { color:var(--blue); font-family:Outfit, sans-serif; }
+    .slide-body h4 { margin:8px 0; font-size:17px; }
+    .slide-body p { color:var(--muted); font-size:14px; line-height:1.65; }
+    .visual-list { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+    .visual-list span { border:1px solid var(--line); color:#43516a; border-radius:999px; padding:5px 7px; font-size:11px; }
+    .question-grid, .evidence-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; }
+    .question, .evidence { background:white; border:1px solid var(--line); border-radius:22px; padding:18px; }
+    .question b, .evidence b { display:block; color:var(--blue); margin-bottom:6px; font-family:Outfit, "Noto Sans SC"; }
+    .question p, .evidence p { color:var(--muted); line-height:1.7; margin:0; }
+    .sources { display:grid; grid-template-columns:repeat(4, 1fr); gap:14px; }
+    .source { background:white; border:1px solid var(--line); border-radius:18px; padding:16px; min-height:118px; }
+    .source b { color:var(--ink); }
+    .source span { display:block; color:var(--muted); line-height:1.55; font-size:13px; margin-top:6px; word-break:break-word; }
+    footer { padding:36px 0 58px; color:var(--muted); }
+    .fade { opacity:0; transform:translateY(18px); animation:rise .68s cubic-bezier(.16,1,.3,1) forwards; animation-delay:calc(var(--i, 0) * 70ms); }
+    @keyframes rise { to { opacity:1; transform:none; } }
+    @media (max-width:980px) {
+      .hero-grid, .section-head, .brief-grid, .product-grid, .image-row { grid-template-columns:1fr; }
+      .concept-grid, .slide-grid, .question-grid, .evidence-grid, .report-map, .simple-grid, .flow { grid-template-columns:1fr 1fr; }
+      .mini-grid, .sources { grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width:640px) {
+      .links { display:none; }
+      .concept-grid, .slide-grid, .question-grid, .evidence-grid, .mini-grid, .sources, .report-map, .simple-grid, .flow { grid-template-columns:1fr; }
+      .point { grid-template-columns:1fr; }
+      h1 { font-size:42px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">ERP Decision Intelligence</a>
+      <div class="links">
+        <a href="#brief">任务背景</a><a href="#report">报告精读</a><a href="#framework">知识点</a><a href="#products">产品路线</a><a href="#compare">对比</a><a href="#implementation">实施</a><a href="#slides">PPT</a><a href="#sources">来源</a>
+      </div>
+    </div>
+  </nav>
+  <main id="top">
+    <header class="hero wrap">
+      <div class="hero-grid">
+        <div class="fade" style="--i:0">
+          <div class="kicker">Based on the final report and final 28-slide PPT</div>
+          <h1>从仪表盘到 ERP 决策智能</h1>
+          <p class="lead">本网站基于最终报告 <strong>DOTE6940I_Group_Project_Report_Enhanced</strong> 和最终 PPT：<strong>From Dashboard Leadership to ERP Decision Intelligence: Microsoft Power BI/Fabric vs Qlik Cloud Analytics/Qlik Talend</strong>。中文负责讲清楚“为什么这样比较”，英文术语负责和报告、PPT、演讲稿对齐。</p>
+          <div class="tag-row">
+            <span class="tag"><b>Microsoft</b> ecosystem standardization</span>
+            <span class="tag"><b>Qlik</b> heterogeneous integration</span>
+            <span class="tag"><b>ERP</b> governance and benefit realization</span>
+            <span class="tag"><b>Final report</b> 9 sections + references</span>
+            <span class="tag"><b>Final PPT</b> 28 slides, 16:9</span>
+          </div>
+        </div>
+        <div class="hero-media fade" style="--i:1">
+          <img src="assets/slides/slide-01.png" alt="Final PPT cover slide">
+          <div class="caption">最终报告和最终 PPT 的共同主结论：Microsoft 和 Qlik 都是可信的长期 ABI Leaders。真正的 ERP 问题不是谁排名更响，而是谁更匹配企业的数据环境、治理成熟度和用户采纳能力。</div>
+        </div>
+      </div>
+    </header>
+
+    <section id="brief" class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">Assignment brief</div><h2>Topic 2 到底要求比较什么</h2></div>
+        <p>这不是普通产品介绍，也不是 Gartner 排名解读。最终 PPT 把题目拆成五个任务：长期 Leaders、功能特征、市场接受、优缺点、真实案例和 ERP 启示。</p>
+      </div>
+      <div class="brief-grid">
+        <div class="panel">
+          <h3>作业要求 -> 网站回答</h3>
+          <div class="mini-grid">
+            <div class="mini"><b>01 Leaders</b>Microsoft 18 years, Qlik 15 years</div>
+            <div class="mini"><b>02 Functions</b>Power BI/Fabric vs Qlik/Talend</div>
+            <div class="mini"><b>03 Acceptance</b>Familiarity vs integration need</div>
+            <div class="mini"><b>04 Compare</b>Capability, fit, governance, adoption, risk</div>
+            <div class="mini"><b>05 Case</b>M&S lessons and transfer limits</div>
+          </div>
+        </div>
+        <div class="panel slide-shot">
+          <img src="assets/slides/slide-02.png" alt="Final PPT slide 02">
+        </div>
+      </div>
+    </section>
+
+    <section id="report" class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">Final report explained</div><h2>最终报告精读：一章一章讲清楚</h2></div>
+        <p>下面按最终报告的真实章节来解释。每一张卡片都回答三个问题：报告这一章说什么、为什么对 ERP 重要、它对应 PPT 哪几页。</p>
+      </div>
+      <div class="simple-grid" id="reportExplainerGrid"></div>
+      <div class="report-map" id="reportMap" style="margin-top:16px"></div>
+    </section>
+
+    <section class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">Report logic in plain Chinese</div><h2>用最简单的话理解报告主线</h2></div>
+        <p>如果完全没学过这门课，可以先读这一段：报告其实是在把“买 BI 平台”翻译成“ERP 实施决策”。</p>
+      </div>
+      <div class="flow">
+        <div class="flow-step"><b>1. 先证明选得对</b><p>Microsoft 和 Qlik 都是长期 Gartner ABI Leaders，满足题目要求。</p></div>
+        <div class="flow-step"><b>2. 再解释为什么被市场接受</b><p>Microsoft 靠熟悉生态和协作，Qlik 靠跨系统整合和数据质量。</p></div>
+        <div class="flow-step"><b>3. 然后放进 ERP 框架</b><p>看 business case、benefit owner、data governance、scope control 和 adoption。</p></div>
+        <div class="flow-step"><b>4. 最后给条件式建议</b><p>Microsoft for standardization; Qlik for heterogeneous integration; pilot before scale.</p></div>
+      </div>
+    </section>
+
+    <section id="framework" class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">Core knowledge</div><h2>每个主要知识点怎么理解</h2></div>
+        <p>下面不是术语表堆砌，而是报告和 PPT 后面所有判断的基础。每个知识点都给出中文解释、英文对比、ERP 小例子和对应 PPT 页面。</p>
+      </div>
+      <div class="concept-grid" id="conceptGrid"></div>
+    </section>
+
+    <section id="products" class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">Vendor product routes</div><h2>两家公司产品图片与 ERP 适配路线</h2></div>
+        <p>产品图片只用于帮助理解平台定位，不把网站做成营销页。判断仍然回到 ERP：数据在哪里、谁负责指标、用户能否采纳、治理能否跟上。</p>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section id="compare" class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">Comparison</div><h2>不是谁绝对赢，而是谁更匹配</h2></div>
+        <p>最终报告和 PPT 的比较方法是一致的：capability、fit、governance、adoption、risk。不要把 Microsoft 写成默认赢家，也不要把 Qlik 写成备用选择。</p>
+      </div>
+      <table class="matrix">
+        <thead><tr><th>判断维度</th><th>Microsoft Power BI/Fabric</th><th>Qlik Cloud Analytics/Qlik Talend</th><th>ERP 含义</th></tr></thead>
+        <tbody>
+          <tr><td>平台中心</td><td>Microsoft 365、Teams、Excel、Azure、Dynamics、Fabric</td><td>Qlik Cloud Analytics、Talend integration、associative engine</td><td>先看企业已有系统环境和数据重心。</td></tr>
+          <tr><td>最佳适配</td><td>Microsoft-centered landscape，需要快速统一 KPI 和协作</td><td>Heterogeneous landscape，需要跨 ERP、旧系统、SaaS 整合</td><td>工具选择要匹配真实数据问题。</td></tr>
+          <tr><td>核心价值</td><td>熟悉工作环境、语义模型、协作和安全控制</td><td>数据整合、质量、血缘、关联分析和主动提醒</td><td>价值不是界面漂亮，而是流程决策更可信。</td></tr>
+          <tr><td>主要风险</td><td>report sprawl、capacity cost、vendor lock-in、AI over-trust</td><td>training burden、governance workload、master data discipline</td><td>强工具也可能失败，关键是治理和变革管理。</td></tr>
+        </tbody>
+      </table>
+      <div class="image-row" style="margin-top:18px">
+        <div class="panel"><img src="assets/slides/slide-19.png" alt="Direct comparison slide"><div class="caption">Slide 19: 直接比较矩阵，强调不同 ERP 环境下的不同适配。</div></div>
+        <div class="panel"><img src="assets/slides/slide-20.png" alt="ERP fit matrix slide"><div class="caption">Slide 20: ERP fit matrix，要求先问数据重心、流程所有权、训练能力、安全和成本。</div></div>
+      </div>
+    </section>
+
+    <section id="implementation" class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">Implementation logic</div><h2>买工具之后，真正决定成败的事</h2></div>
+        <p>报告第 5 和第 7 章、PPT Slides 21-25 是 ERP 课程味道最强的部分：平台只是工具，成功要靠收益负责人、价值链可视性、变革管理、数据治理和范围控制。</p>
+      </div>
+      <div class="image-row">
+        <div class="panel">
+          <img src="assets/charts/mcp_03_governance_org.png" alt="Governance organization chart">
+          <div class="caption">治理组织图：steering committee、process owners、data team、change lead 必须协同。</div>
+        </div>
+        <div class="panel">
+          <img src="assets/charts/mcp_05_implementation_roadmap.png" alt="Implementation roadmap chart">
+          <div class="caption">实施路线：先试点、证明收益和采纳，再扩大范围。不要一开始全公司铺开。</div>
+        </div>
+      </div>
+      <div class="question-grid" id="questionGrid" style="margin-top:16px"></div>
+    </section>
+
+    <section class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">Case evidence</div><h2>Marks & Spencer 案例应该怎么用</h2></div>
+        <p>报告第 6 章用 M&S 案例说明 Azure Synapse + Power BI 可以支持零售多渠道可视性和共享证据。但它不能证明 Microsoft 永远优于 Qlik，它只能支持“共享数据有助于更快决策”这个 ERP 启示。</p>
+      </div>
+      <div class="image-row">
+        <div class="panel"><img src="assets/slides/slide-26.png" alt="M&S case slide"><div class="caption">Slide 26: M&S 与 Microsoft 案例，展示 shared evidence 和 retail visibility。</div></div>
+        <div class="panel"><img src="assets/slides/slide-27.png" alt="Case lessons slide"><div class="caption">Slide 27: 案例启示与迁移限制。若企业主要问题是异构数据和血缘，Qlik 仍可能更适合。</div></div>
+      </div>
+    </section>
+
+    <section id="slides" class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">Final PPT map</div><h2>最终 PPT 28 页逐页导览</h2></div>
+        <p>下面使用从最终 PPT 直接导出的 28 张 16:9 页面图。它和上面的最终报告解释是同一条逻辑：报告负责展开论证，PPT 负责压缩展示。</p>
+      </div>
+      <div class="tabs" id="tabs"></div>
+      <div class="slide-grid" id="slideGrid"></div>
+    </section>
+
+    <section id="sources" class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">Evidence boundary</div><h2>来源、图片依据与证据边界</h2></div>
+        <p>官方网页图和官方证据图用于事实依据；MCP 图用于教学解释；PPT 页面图用于和最终演示稿对齐。最终报告也明确避免虚构 ROI、vendor score、benchmark 或自编市场排名。</p>
+      </div>
+      <div class="evidence-grid">
+        <div class="evidence"><b>官方事实证据</b><p>Leader 年限、产品说明和案例网页只作为事实依据，不直接推出绝对胜负。</p></div>
+        <div class="evidence"><b>课程框架图</b><p>MCP 可视化解释 business case、governance、scope control、AI boundary 等概念，不代表官方评分。</p></div>
+        <div class="evidence"><b>最终 PPT 图片</b><p>28 张 slide 图片来自最终 PPT 导出，用于教学对应，不再引用旧 PPT 作为主索引。</p></div>
+      </div>
+      <div class="sources" style="margin-top:16px">
+        <a class="source" href="https://nam.powerbi.microsoft.com/en-us/blog/microsoft-named-a-leader-in-the-2025-gartner-magic-quadrant-for-analytics-and-bi-platforms/"><b>Microsoft Leader Blog</b><span>Power BI 2025 Gartner ABI Leader evidence</span></a>
+        <a class="source" href="https://learn.microsoft.com/en-us/fabric/get-started/microsoft-fabric-overview"><b>Microsoft Fabric Overview</b><span>Fabric, OneLake, lakehouse and analytics platform context</span></a>
+        <a class="source" href="https://www.qlik.com/us/news/company/press-room/press-releases/qlik-named-leader-in-2025-gartner-magic-quadrant-for-analytics-and-business-intelligence-platforms"><b>Qlik Leader Release</b><span>Qlik 2025 Gartner ABI Leader evidence</span></a>
+        <a class="source" href="https://www.qlik.com/us/products/qlik-talend-cloud"><b>Qlik Talend Cloud</b><span>Integration, quality, lineage and governance foundation</span></a>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap">Built from the final report and final PPT package. 中文解释服务于学习理解；关键英文术语用于和报告、PPT、演讲稿对齐。</footer>
+  <script>
+    const concepts = [{"name": "ERP 企业资源计划", "en": "Enterprise Resource Planning", "plain": "ERP 不是一个单独软件名，而是把采购、库存、销售、财务、供应链和服务等流程放到同一套业务逻辑里。", "example": "如果销售看到一套收入数字，财务看到另一套收入数字，ERP 决策就会失真。", "ppt": "Slides 04-05"}, {"name": "ABI 分析与商业智能", "en": "Analytics and Business Intelligence", "plain": "ABI 不只是做漂亮仪表盘，而是把企业数据变成可解释、可追踪、可行动的管理判断。", "example": "库存异常不是只画一条红线，还要知道来自哪个系统、谁负责处理、是否需要审批。", "ppt": "Slides 01-03"}, {"name": "业务论证", "en": "Business Case", "plain": "项目必须说明收益、成本、风险、关键成功因素和收益负责人，否则 BI 平台会变成报表成本。", "example": "财务负责人可以负责结账周期，采购负责人负责供应商响应速度。", "ppt": "Slides 04, 21"}, {"name": "收益负责人", "en": "Benefit Owner", "plain": "系统上线不等于收益自动实现。必须指定角色对 KPI 改善负责。", "example": "供应链 planner 要对库存准确率、延误响应时间等收益负责。", "ppt": "Slide 21"}, {"name": "语义模型", "en": "Semantic Model", "plain": "语义模型把原始数据转成业务可理解的指标定义，减少部门之间同一指标不同口径。", "example": "Revenue、gross margin、inventory turnover 都要有统一定义和审批。", "ppt": "Slides 07-08"}, {"name": "数据血缘", "en": "Data Lineage", "plain": "数据血缘回答一个数字从哪里来、经过哪些转换、谁批准过、哪里可能出错。", "example": "看到库存数字异常时，可以追到 ERP 表、转换规则和刷新时间。", "ppt": "Slides 16, 24"}, {"name": "关联分析", "en": "Associative Analytics", "plain": "用户不只能沿预设路径下钻，而是可以从供应商、产品、地区、库存、毛利等维度自由找关系。", "example": "毛利下降可能和供应商延迟、库存积压、促销渠道同时有关。", "ppt": "Slide 15"}, {"name": "主动分析", "en": "Active Analytics", "plain": "平台可以发现异常、提醒负责人、支持调查和建议下一步，但高影响动作仍需人工批准。", "example": "系统可以提醒供应风险，但不能无人审批就更换供应商或付款。", "ppt": "Slide 17"}, {"name": "变革管理", "en": "Change Management", "plain": "用户是否愿意改工作方式、是否信任指标、是否继续退回 Excel，决定系统价值能否落地。", "example": "需要 sponsor、super users、角色化培训和 KPI 签字确认。", "ppt": "Slide 23"}, {"name": "范围蔓延", "en": "Scope Creep", "plain": "报表、接口、清洗、权限、AI 功能都可能扩大项目范围，必须像 ERP 实施一样管理。", "example": "一个新 dashboard 需求可能带来新接口、新数据转换和新权限审批。", "ppt": "Slide 25"}, {"name": "数据治理", "en": "Data Governance", "plain": "治理决定谁定义指标、谁批准报表、谁能访问敏感数据，以及 AI 建议的边界在哪里。", "example": "付款、供应商、定价、HR、财务报表等高风险动作必须保留人工审核。", "ppt": "Slides 10, 24"}, {"name": "试点后扩展", "en": "Pilot before Scale", "plain": "不要一开始全公司铺开，应先选一个价值链场景证明收益、采纳和治理，再扩大范围。", "example": "先做采购到库存的异常响应试点，再扩展到财务和销售。", "ppt": "Slide 28"}];
+    const products = [{"key": "microsoft", "title": "Microsoft 路线：Power BI + Fabric", "subtitle": "适合 Microsoft 生态强、用户熟悉 Excel/Teams、希望快速标准化指标和协作流程的企业。", "image": "assets/online/microsoft_fabric_overview.png", "badge": "Ecosystem standardization", "slides": "Slides 06-12", "points": [["Power BI", "面向业务用户的报表、dashboard、app 和数据探索体验。"], ["Fabric / OneLake", "把 lakehouse、warehouse、data pipeline 和 BI 放在统一数据平台中。"], ["Semantic Model", "统一 KPI 定义，避免财务、销售、运营各自解释同一指标。"], ["Microsoft 365 / Teams / Excel", "把分析嵌入现有工作习惯，降低培训和变革阻力。"], ["Copilot boundary", "可辅助总结和生成，但高风险 ERP 动作必须有人审核。"]], "risks": "主要风险是授权和容量成本、report sprawl、生态锁定、AI 过度信任。"}, {"key": "qlik", "title": "Qlik 路线：Cloud Analytics + Talend", "subtitle": "适合多 ERP、旧系统、SaaS 和外部数据混在一起，且数据质量/血缘是核心问题的企业。", "image": "assets/online/qlik_talend.png", "badge": "Heterogeneous integration", "slides": "Slides 13-18", "points": [["Qlik Cloud Analytics", "提供 dashboard、关联探索、洞察和主动分析工作流。"], ["Qlik Talend Cloud", "支持数据移动、转换、质量、血缘和治理基础。"], ["Associative Analytics", "帮助用户跨供应商、产品、地区、库存、毛利等维度找关系。"], ["Data Quality / Lineage", "解释数据从哪里来、如何变化、哪里可能错误、谁负责。"], ["Active Analytics", "从 detect、alert、investigate、recommend 到 act，但高影响动作需审批。"]], "risks": "主要风险是培训成本、数据治理工作量、主数据纪律要求和 Microsoft 已有授权竞争。"}];
+    const questions = [["数据重心在哪里？", "Data gravity", "数据主要在 Microsoft 生态，还是分散在 SAP、Oracle、旧库、SaaS 和外部来源？"], ["谁拥有 KPI？", "KPI ownership", "收入、毛利、库存、供应商交期等指标由谁定义和批准？"], ["用户愿意改变吗？", "Adoption", "用户能否接受新工具、新流程和新的指标口径？"], ["AI 到哪里停止？", "AI boundary", "哪些建议可以自动生成，哪些付款、定价、供应商和财务动作必须人工审核？"], ["范围如何控制？", "Scope control", "报表、接口、数据清洗、权限和基础设施是否被当作正式范围管理？"], ["收益如何衡量？", "Benefit measurement", "试点上线后如何证明决策延迟降低、库存准确率提升或结账速度改善？"]];
+    const reportSections = [{"no": "Executive Summary", "title": "报告核心结论", "plain": "最终报告的中心观点是：Microsoft 和 Qlik 都是长期 ABI Leaders，但它们适合的 ERP 场景不同。Microsoft 通过生态标准化降低采纳阻力；Qlik 通过异构数据整合解决多系统碎片化。", "why": "这告诉零基础读者：这篇报告不是问“谁名气更大”，而是问“企业的数据环境和治理能力更适合谁”。", "ppt": "Slides 01-03, 28"}, {"no": "Section 1", "title": "题目解释与厂商选择", "plain": "报告先解释老师要求：选择两个长期处于 Gartner ABI Leaders 的厂商，讲功能、市场接受原因、优劣比较，并尽量加入真实案例。Microsoft 和 Qlik 被选中，是因为官方资料分别说明 Power BI 18 年 Leader、Qlik 15 年 Leader。", "why": "这一步相当于证明“选题没有跑偏”。它把 PPT 后面所有比较都建立在老师要求之上。", "ppt": "Slides 02-03"}, {"no": "Section 2", "title": "Microsoft Power BI/Fabric", "plain": "报告把 Microsoft 的价值概括为 Power BI + Fabric + Microsoft 365/Azure/Dynamics/Copilot 的组合。Power BI 做报表和语义模型，Fabric 做统一数据平台，Teams/Excel 降低用户学习成本。", "why": "对 ERP 来说，Microsoft 的重点不是 dashboard 好看，而是统一指标、嵌入协作、减少报表口径冲突，并通过熟悉工具提高采纳。", "ppt": "Slides 06-12"}, {"no": "Section 3", "title": "Qlik Cloud Analytics/Qlik Talend", "plain": "报告把 Qlik 的价值概括为“分析前端 + Talend 数据基础”。它适合企业数据分布在 SAP、Oracle、Microsoft、旧系统、云仓库和 Excel 中的情况。", "why": "对 ERP 来说，Qlik 的重点是先把分散数据连起来、清洗好、讲清来源，再让用户做跨系统分析。", "ppt": "Slides 13-18"}, {"no": "Section 4", "title": "比较分析与 ERP 适配", "plain": "报告说最重要的差异是 implementation fit。Microsoft 适合 Microsoft-centered landscape；Qlik 适合 heterogeneous landscape。Gartner Magic Quadrant 只是市场信号，不是最终选择答案。", "why": "这一章让比较从“产品功能表”变成“企业适配判断”。先看数据重心、流程所有权、治理成熟度，再选工具。", "ppt": "Slides 19-20"}, {"no": "Section 5", "title": "业务论证、收益与关键成功因素", "plain": "报告强调 ABI 投资不能只说“Leader 平台很先进”。必须说明业务收益、成本、风险、收益负责人、KPI、数据质量和 steering committee 审查。", "why": "ERP 项目常见失败不是工具不能用，而是上线后没人负责收益、指标口径继续争论、用户继续导出 Excel。", "ppt": "Slides 21-25"}, {"no": "Section 6", "title": "Marks & Spencer 案例", "plain": "报告用 M&S 与 Microsoft 的案例说明 Azure Synapse + Power BI 可以支持零售多渠道数据可视性和共享证据。案例重点是“共享数据如何支持更快决策”。", "why": "这个案例不能证明 Microsoft 永远赢，只能证明在治理、数据平台和培训配合下，Power BI 可以创造 ERP 相关价值。", "ppt": "Slides 26-27"}, {"no": "Section 7", "title": "治理与实施建议", "plain": "报告建议像管理 ERP 实施一样管理 ABI 选择：先做 business case，明确语义治理，控制 scope levers，给 AI 设置风险等级，再从一个流程场景试点扩展。", "why": "这章是报告最实用的部分：无论选 Microsoft 还是 Qlik，都要有负责人、审批、访问控制、数据血缘、培训和分阶段 rollout。", "ppt": "Slides 21-25, 28"}, {"no": "Section 8", "title": "视觉证据与来源纪律", "plain": "报告明确区分官方事实证据和课程概念图。Leader 年限来自官方公告；data-to-decision、governance、AI risk 和 roadmap 是基于课程与文档的分析图。", "why": "这避免了常见问题：自编 ROI、自编评分雷达图或把主观判断伪装成官方数据。", "ppt": "Sources + Visual Appendix"}, {"no": "Section 9", "title": "最终结论", "plain": "报告结论是条件式建议：Microsoft 适合生态标准化、熟悉协作和统一语义模型；Qlik 适合异构整合、关联探索和跨系统可视性。", "why": "最终答案不是单一赢家，而是 Microsoft for standardization; Qlik for heterogeneous integration; pilot before scale.", "ppt": "Slide 28"}];
+    const reportExplainers = [["为什么报告比 PPT 更完整？", "PPT 负责快速表达结论，报告负责展开论证、来源、风险、限制和实施建议。网站现在把两者合在一起讲。"], ["为什么强调 ERP 而不是 BI？", "因为课程关注的是业务流程、收益实现、变革管理、数据治理和范围控制。BI 只是 ERP 决策的一部分。"], ["为什么不直接选 Microsoft？", "Microsoft 在生态标准化上强，但如果企业数据非常分散，Qlik 的整合、质量和血缘能力可能更符合问题。"], ["为什么不直接选 Qlik？", "Qlik 在异构整合上强，但如果企业已经高度 Microsoft 化，Power BI/Fabric 的采纳成本和协作优势更现实。"], ["报告最重要的判断标准是什么？", "不是 vendor ranking，而是 data gravity、process ownership、governance maturity、adoption capacity 和 benefit measurement。"], ["老师要求如何被覆盖？", "报告覆盖长期 Leaders、核心功能、市场接受原因、优劣比较、真实案例、ERP 启示和来源纪律。"]];
+    const slides = [{"no": 1, "id": "Slide 01", "title": "Title and Thesis", "section": "Opening", "thesis": "Microsoft and Qlik are both long-running ABI Leaders; the right choice depends on ERP landscape, governance and adoption.", "zh": "开场页把题目定义为 ERP 实施决策。两个厂商都强，真正问题是谁更适合企业架构、流程责任和收益实现。", "en": "This opening frames the topic as an ERP implementation decision. Both vendors are credible Leaders, so we ask which one better supports the company architecture, process ownership and value realization.", "bullets": ["Main title: From Dashboard Leadership to ERP Decision Intelligence", "Subtitle: Microsoft Power BI/Fabric vs Qlik Cloud Analytics/Qlik Talend", "Thesis: Microsoft wins through ecosystem standardization; Qlik wins through heterogeneous integration", "Evidence chips: 2025 ABI Leaders, Microsoft 18 years, Qlik 15 years, ERP fit, governance, benefit realization"], "visuals": ["online_downloaded/microsoft_powerbi_gartner.png", "online_downloaded/qlik_gartner_2025.png", "charts_mcp/mcp_02_data_to_decision.png"], "course": ["Unit 2 ERP Business Case: benefits, costs, risks, CSFs, TCO and benefit owners.", "Unit 6 Data Quality/Governance: steering committee, ownership, certified metrics, lineage and access control."], "img": "assets/slides/slide-01.png"}, {"no": 2, "id": "Slide 02", "title": "Final Topic 2 Requirement and Evaluation Task", "section": "Requirement fit", "thesis": "The deck must answer five tasks: two Leaders, functions, market acceptance, strengths/weaknesses and case evidence.", "zh": "最终题目要求比较两个连续多年 Leaders 的厂商。我把要求转成评价维度，保证 PPT 不跑题。", "en": "The final brief asks for a focused comparison of two long-running Leaders. I translate that into evaluation dimensions so the deck stays aligned with the assignment.", "bullets": ["Two long-running Leaders in 2025 Gartner ABI context", "Key functions and platform features", "Reasons for market acceptance", "Strengths and weaknesses comparison", "Real case evidence and ERP lessons", "Evaluation criteria: capability, fit, governance, adoption and risk"], "visuals": ["previous_dense_slide_reference/slide-02.png"], "course": ["Unit 2 ERP Business Case: benefits, costs, risks, CSFs, TCO and benefit owners."], "img": "assets/slides/slide-02.png"}, {"no": 3, "id": "Slide 03", "title": "Why These Two Vendors under 2025 Gartner ABI Leaders", "section": "Vendor choice", "thesis": "Microsoft and Qlik satisfy the long-running Leader requirement and represent two different ERP-fit patterns.", "zh": "连续多年 Leaders 的证据说明两个厂商都适合本题。Microsoft 适合标准化，Qlik 适合系统碎片化和跨系统整合。", "en": "The consecutive Leader evidence makes both vendors suitable for Topic 2. Microsoft is useful for standardization; Qlik is useful when systems are fragmented.", "bullets": ["Microsoft: official 2025 source says 18 consecutive years as ABI Leader", "Qlik: official 2025 source says 15 consecutive years as ABI Leader", "Microsoft pattern: ecosystem standardization and collaboration", "Qlik pattern: integration flexibility and associative discovery", "Conclusion: both qualify, but they solve different ERP problems"], "visuals": ["charts_mcp/mcp_01_leader_years.png", "official_visuals/official_consecutive_leader_years.jpg", "online_downloaded/microsoft_powerbi_gartner.png", "online_downloaded/qlik_gartner_2025.png"], "course": ["Unit 2 ERP Business Case: benefits, costs, risks, CSFs, TCO and benefit owners."], "img": "assets/slides/slide-03.png"}, {"no": 4, "id": "Slide 04", "title": "ERP Evaluation Lens: Six Course Concepts", "section": "ERP framing", "thesis": "The six ERP course concepts become the decision framework for all later vendor comparisons.", "zh": "介绍功能前必须先建立 ERP 判断框架。BI 平台只有改善流程结果、责任归属、用户采纳和数据可信度时才有价值。", "en": "Before discussing features, we need an ERP lens. A BI platform has value only when it improves process outcomes, ownership, adoption and data trust.", "bullets": ["Business case: benefits, costs, risks, CSFs and benefit owners", "Benefit owners: finance, procurement, supply chain, sales operations and data governance roles", "Value-chain visibility: reduce decision latency across linked processes", "Change management: sponsors, super users, training and resistance points", "Scope levers: reports, interfaces and data conversion are real scope items", "Data quality/governance: certified metrics, lineage, access and approval workflow"], "visuals": ["charts_mcp/mcp_02_data_to_decision.png"], "course": ["Unit 2 ERP Business Case: benefits, costs, risks, CSFs, TCO and benefit owners.", "Unit 4 Value Chain: ERP/AI tools should improve end-to-end process visibility and action."], "img": "assets/slides/slide-04.png"}, {"no": 5, "id": "Slide 05", "title": "Comparison Method: Capability, Fit, Governance, Adoption, Risk", "section": "Method", "thesis": "The deck compares vendor capability and ERP implementation fit, not only product features.", "zh": "这个方法避免 PPT 变成产品功能清单。我们从能力、架构适配、治理、采纳和风险控制来判断。", "en": "The comparison method prevents a feature-list presentation. Each vendor is judged by capability, architecture fit, governance, adoption and risk control.", "bullets": ["Capability: analytics, semantic layer, integration, AI and automation", "Fit: Microsoft-centered estate vs heterogeneous ERP estate", "Governance: KPI ownership, data quality, lineage and access control", "Adoption: user familiarity, training burden and change resistance", "Risk: cost, lock-in, report sprawl, AI over-trust and scope creep"], "visuals": ["previous_dense_slide_reference/slide-18.png"], "course": ["Unit 2 ERP Business Case: benefits, costs, risks, CSFs, TCO and benefit owners.", "Unit 5 Change Management: sponsor commitment, super users, training and user resistance."], "img": "assets/slides/slide-05.png"}, {"no": 6, "id": "Slide 06", "title": "Microsoft Proposition: Power BI + Fabric in One Sentence", "section": "Microsoft", "thesis": "Microsoft combines Power BI, Fabric, semantic models and Microsoft 365/Azure/Dynamics adjacency.", "zh": "Microsoft 的吸引力在于它把分析和员工熟悉的工具连接起来，降低变革阻力，并支持标准化报表。", "en": "Microsoft is attractive because it joins analytics with tools that many employees already use, reducing change resistance and supporting standardized reporting.", "bullets": ["One-sentence proposition: governed analytics inside the Microsoft work environment", "Core tools: Power BI reports, dashboards and semantic models", "Platform extension: Fabric, OneLake, lakehouse, warehouse and data pipelines", "Ecosystem adjacency: Excel, Teams, SharePoint, Azure, Dynamics 365 and Power Platform", "ERP value: lower adoption friction and stronger standardization"], "visuals": ["online_downloaded/microsoft_fabric_overview.png", "previous_dense_slide_reference/slide-06.png"], "course": ["Unit 4 Value Chain: ERP/AI tools should improve end-to-end process visibility and action.", "Unit 5 Change Management: sponsor commitment, super users, training and user resistance."], "img": "assets/slides/slide-06.png"}, {"no": 7, "id": "Slide 07", "title": "Microsoft Architecture: Fabric, OneLake, Semantic Model, Power BI", "section": "Microsoft", "thesis": "Microsoft architecture links data storage, governed semantic layer and user-facing BI.", "zh": "架构重要是因为 ERP 分析需要把运营系统数据可靠地传递到用户决策。语义模型是原始数据和业务含义之间的桥。", "en": "The architecture matters because ERP analytics needs trusted data flow from operational systems to user decisions. The semantic model bridges raw data and business meaning.", "bullets": ["Data layer: Fabric/OneLake and connected ERP data sources", "Model layer: semantic models define relationships and calculations", "Experience layer: Power BI reports, dashboards and apps", "Collaboration layer: Teams, Excel and Microsoft 365 workflows", "Control layer: identity, access, certified datasets and workspace governance"], "visuals": ["online_downloaded/microsoft_fabric_overview.png"], "course": ["Unit 6 Data Quality/Governance: steering committee, ownership, certified metrics, lineage and access control.", "Unit 6 Scope Levers: organization, process, function, interface, data conversion, reports/forms and infrastructure."], "img": "assets/slides/slide-07.png"}, {"no": 8, "id": "Slide 08", "title": "Microsoft Feature 1: Governed Semantic Models", "section": "Microsoft", "thesis": "Governed semantic models reduce KPI conflict across departments and reports.", "zh": "如果每个部门都自己定义指标，ERP 决策就会失败。Microsoft 语义模型通过可复用、认证的定义减少这种冲突。", "en": "ERP decisions fail when each department defines metrics differently. Microsoft semantic models can reduce this by creating reusable, certified definitions.", "bullets": ["Define certified measures: revenue, margin, inventory turnover, supplier lead time and forecast accuracy", "Reuse relationships and calculations across many reports", "Separate report design from metric ownership", "Support finance, supply chain, sales and operations with one trusted logic", "ERP risk if missing: spreadsheet conflict and inconsistent decisions"], "visuals": ["previous_dense_slide_reference/slide-07.png"], "course": ["Unit 6 Data Quality/Governance: steering committee, ownership, certified metrics, lineage and access control.", "Unit 6 Scope Levers: organization, process, function, interface, data conversion, reports/forms and infrastructure."], "img": "assets/slides/slide-08.png"}, {"no": 9, "id": "Slide 09", "title": "Microsoft Feature 2: Ecosystem Gravity and Collaboration", "section": "Microsoft", "thesis": "Power BI benefits from proximity to Excel, Teams, SharePoint, Azure, Dynamics and Power Platform.", "zh": "市场接受度有组织层面的原因。如果用户已经在 Microsoft 工具中工作，Power BI 更容易推广，但仍需要治理控制。", "en": "Market acceptance is partly organizational. If users already work in Microsoft tools, Power BI adoption can be faster, but governance controls are still needed.", "bullets": ["User familiarity: Excel and Teams reduce training burden", "Collaboration: reports sit close to meetings, files and workflows", "Integration: Dynamics and Azure adjacency supports enterprise architecture", "Change management: existing work habits can speed adoption", "Risk: convenience can increase lock-in and uncontrolled report growth"], "visuals": ["previous_dense_slide_reference/slide-08.png"], "course": ["Unit 5 Change Management: sponsor commitment, super users, training and user resistance.", "Unit 6 Scope Levers: organization, process, function, interface, data conversion, reports/forms and infrastructure."], "img": "assets/slides/slide-09.png"}, {"no": 10, "id": "Slide 10", "title": "Microsoft Feature 3: Copilot with ERP Control Boundaries", "section": "Microsoft", "thesis": "Copilot can help create and summarize insights, but ERP decisions require grounding, review and approval.", "zh": "AI 有用，但 ERP 数据影响资金和运营。因此 Copilot 应支持解释和准备，而不是不受控地执行。", "en": "AI is useful, but ERP data affects money and operations. Therefore Copilot should support explanation and preparation, not uncontrolled execution.", "bullets": ["Use cases: report drafting, DAX help, summarization and natural-language exploration", "Required grounding: answers must use certified semantic models and trusted data", "Human review: process owner reviews decisions before action", "High-risk boundary: payments, suppliers, pricing, HR and financial statements require approval", "Audit: prompts, assumptions and outputs should be traceable"], "visuals": ["previous_dense_slide_reference/slide-09.png"], "course": ["Unit 6 Data Quality/Governance: steering committee, ownership, certified metrics, lineage and access control.", "Unit 5 Change Management: sponsor commitment, super users, training and user resistance."], "img": "assets/slides/slide-10.png"}, {"no": 11, "id": "Slide 11", "title": "Microsoft Strengths: Why the Market Accepts It", "section": "Microsoft", "thesis": "Microsoft is accepted because it combines familiarity, collaboration, security and an integrated platform story.", "zh": "Microsoft 的优势不只是产品多，而是能嵌入现有工作习惯和企业控制体系，这有利于采纳和治理。", "en": "Microsoft strength is not only product breadth. It fits existing work routines and enterprise controls, supporting adoption and governance.", "bullets": ["Familiar tools reduce user resistance", "Large user and skills base lowers support risk", "Collaboration fit with Teams, Excel and Microsoft 365", "Enterprise security and identity controls support governance", "Fabric expands the story from BI tool to enterprise data platform"], "visuals": ["previous_dense_slide_reference/slide-10.png"], "course": ["Unit 5 Change Management: sponsor commitment, super users, training and user resistance.", "Unit 6 Data Quality/Governance: steering committee, ownership, certified metrics, lineage and access control."], "img": "assets/slides/slide-11.png"}, {"no": 12, "id": "Slide 12", "title": "Microsoft Limitations and Adoption Risks", "section": "Microsoft", "thesis": "Microsoft needs controls for licensing, capacity, report sprawl, lock-in and AI over-trust.", "zh": "Microsoft 的问题不是能力不足，而是太方便后可能失控扩张，所以必须在推广前设计治理。", "en": "The limitation is not that Microsoft lacks capability. The risk is that convenience can create uncontrolled growth, so governance must be designed before rollout.", "bullets": ["Licensing and Fabric capacity can become difficult to plan", "Report sprawl can happen when every team creates its own dashboard", "Lock-in risk increases if architecture is designed only around one ecosystem", "AI over-trust can create wrong or unapproved ERP actions", "Controls: workspace ownership, certified datasets, cost monitoring and AI approval rules"], "visuals": ["previous_dense_slide_reference/slide-11.png"], "course": ["Unit 6 Scope Levers: organization, process, function, interface, data conversion, reports/forms and infrastructure.", "Unit 6 Data Quality/Governance: steering committee, ownership, certified metrics, lineage and access control."], "img": "assets/slides/slide-12.png"}, {"no": 13, "id": "Slide 13", "title": "Qlik Proposition: Analytics + Talend-enabled Data Foundation", "section": "Qlik", "thesis": "Qlik should be presented as analytics plus a data integration and quality foundation, not only dashboards.", "zh": "Qlik 不能只被描述成仪表板产品。它更适合需要跨系统整合、数据血缘和质量管理的分析场景。", "en": "Qlik should not be described as only a dashboard product. Its fit is stronger when analytics depends on integration, lineage and quality across systems.", "bullets": ["Qlik Cloud Analytics: dashboards, associative exploration, insight and action", "Qlik Talend Cloud: integration, data movement, transformation, quality and governance support", "Main fit: heterogeneous ERP, legacy systems, mixed cloud and fragmented operational data", "ERP value: connect scattered data before asking users to trust dashboards"], "visuals": ["online_downloaded/qlik_gartner_2025.png", "online_downloaded/qlik_talend.png"], "course": ["Unit 4 Value Chain: ERP/AI tools should improve end-to-end process visibility and action.", "Unit 6 Data Quality/Governance: steering committee, ownership, certified metrics, lineage and access control."], "img": "assets/slides/slide-13.png"}, {"no": 14, "id": "Slide 14", "title": "Qlik Architecture: Analytics, Integration, Quality, Governance", "section": "Qlik", "thesis": "Qlik architecture links fragmented sources to analytics through integration, quality and governance.", "zh": "当企业不能假设所有数据都已经在 Microsoft 生态中时，Qlik 的架构特别有用。", "en": "Qlik architecture is useful when the organization cannot assume all data already sits in one Microsoft-centered platform.", "bullets": ["Source layer: SAP, Oracle, Microsoft, legacy databases, SaaS and external data", "Integration layer: movement, transformation and refresh pipelines", "Quality layer: validation, cleansing and exception handling", "Analytics layer: associative dashboards, alerts and embedded insights", "Governance layer: lineage, ownership, access and stewardship"], "visuals": ["online_downloaded/qlik_talend.png", "previous_dense_slide_reference/slide-14.png"], "course": ["Unit 4 Value Chain: ERP/AI tools should improve end-to-end process visibility and action.", "Unit 6 Scope Levers: organization, process, function, interface, data conversion, reports/forms and infrastructure."], "img": "assets/slides/slide-14.png"}, {"no": 15, "id": "Slide 15", "title": "Qlik Feature 1: Associative Analytics", "section": "Qlik", "thesis": "Associative analytics helps users investigate relationships across suppliers, products, regions, inventory, delay, margin, service and cash.", "zh": "很多 ERP 问题是跨职能的。关联分析能帮助用户从供应商、产品、库存、服务和财务数据中找出联系。", "en": "Many ERP problems are cross-functional. Associative analytics supports investigation when causes connect supplier, product, inventory, service and finance data.", "bullets": ["Users explore relationships rather than only follow predefined drill paths", "Useful for exception investigation across value-chain nodes", "Supports questions such as why margin changed or why inventory delay occurred", "ERP implication: helps process owners see connected operational causes"], "visuals": ["previous_dense_slide_reference/slide-13.png"], "course": ["Unit 4 Value Chain: ERP/AI tools should improve end-to-end process visibility and action."], "img": "assets/slides/slide-15.png"}, {"no": 16, "id": "Slide 16", "title": "Qlik Feature 2: Integration, Lineage, Data Quality", "section": "Qlik", "thesis": "Qlik is strong where ERP value depends on integration, lineage and data quality across heterogeneous systems.", "zh": "数据整合是 ERP 实施问题，不只是 IT 问题。质量差或血缘不清会破坏用户对仪表板的信任。", "en": "Data integration is an ERP implementation issue, not only an IT issue. Poor quality or unclear lineage destroys user trust in dashboards.", "bullets": ["Integration: connect ERP, CRM, warehouses, SaaS and external sources", "Transformation: align data formats and business rules", "Data quality: detect missing, inconsistent or duplicated records", "Lineage: show where data came from and how it changed", "Governance: assign owners for data products and quality exceptions"], "visuals": ["previous_dense_slide_reference/slide-14.png", "online_downloaded/qlik_talend.png"], "course": ["Unit 6 Data Quality/Governance: steering committee, ownership, certified metrics, lineage and access control.", "Unit 6 Scope Levers: organization, process, function, interface, data conversion, reports/forms and infrastructure."], "img": "assets/slides/slide-16.png"}, {"no": 17, "id": "Slide 17", "title": "Qlik Feature 3: Active Analytics and Alerts", "section": "Qlik", "thesis": "Qlik can support detect-alert-investigate-recommend-act workflows when controls are designed.", "zh": "主动分析重要，因为 ERP 团队需要快速响应异常。但高影响动作仍需要审批。", "en": "Active analytics matters because ERP teams need to respond to exceptions quickly. Automated action still needs approval when the impact is high.", "bullets": ["Detect: identify abnormal operational pattern", "Alert: notify process owner or responsible team", "Investigate: explore related dimensions and root causes", "Recommend: prepare possible actions or next steps", "Act: execute only with approval for important ERP decisions"], "visuals": ["previous_dense_slide_reference/slide-15.png"], "course": ["Unit 4 Value Chain: ERP/AI tools should improve end-to-end process visibility and action.", "Unit 6 Data Quality/Governance: steering committee, ownership, certified metrics, lineage and access control."], "img": "assets/slides/slide-17.png"}, {"no": 18, "id": "Slide 18", "title": "Qlik Strengths and Limitations", "section": "Qlik", "thesis": "Qlik is strong in heterogeneous integration and discovery, but requires training, stewardship and governance discipline.", "zh": "Qlik 不是绕过治理的捷径。它的价值依赖明确的数据责任、培训和跨系统数据产品管理。", "en": "Qlik is not a shortcut around governance. Its value depends on explicit stewardship, training and data-product management across systems.", "bullets": ["Strength: cross-system visibility for mixed ERP and legacy landscapes", "Strength: associative discovery for non-obvious relationships", "Strength: data-quality and integration story through Talend", "Limitation: users may need more training than familiar Microsoft tools", "Limitation: governance workload and master-data discipline must be strong", "Competitive risk: many firms already own Power BI through Microsoft licensing"], "visuals": ["previous_dense_slide_reference/slide-16.png", "previous_dense_slide_reference/slide-17.png"], "course": ["Unit 5 Change Management: sponsor commitment, super users, training and user resistance.", "Unit 6 Data Quality/Governance: steering committee, ownership, certified metrics, lineage and access control."], "img": "assets/slides/slide-18.png"}, {"no": 19, "id": "Slide 19", "title": "Direct Comparison Matrix: Microsoft vs Qlik", "section": "Comparison", "thesis": "Microsoft fits ecosystem standardization; Qlik fits heterogeneous integration and cross-system discovery.", "zh": "这是核心比较。Microsoft 不是因为熟悉就必然更好，Qlik 也不是因为整合强就必然更好。正确答案取决于 ERP 适配。", "en": "This is the core comparison. Microsoft is not automatically better because it is familiar, and Qlik is not automatically better because it integrates more systems. The right answer depends on ERP fit.", "bullets": ["Criteria: platform center, best fit, core value, main risk, adoption lever", "Microsoft: Power BI + Fabric + Microsoft 365; lower adoption friction; risk of sprawl and lock-in", "Qlik: Qlik Cloud + Talend + associative engine; strong integration; risk of training and governance workload", "ERP implication: choose by enterprise architecture, data quality need and change capacity"], "visuals": ["previous_dense_slide_reference/slide-18.png"], "course": ["Unit 2 ERP Business Case: benefits, costs, risks, CSFs, TCO and benefit owners.", "Unit 5 Change Management: sponsor commitment, super users, training and user resistance."], "img": "assets/slides/slide-19.png"}, {"no": 20, "id": "Slide 20", "title": "ERP Fit Matrix: Microsoft-centered vs Heterogeneous Landscape", "section": "Comparison", "thesis": "Vendor choice should start from data gravity, process ownership, training capacity, security, cost and benefit tracking.", "zh": "适配矩阵让建议变得可执行。它要求先看企业真实数据格局，以及上线后谁负责指标和收益。", "en": "The fit matrix makes the recommendation practical. It asks what data landscape the organization actually has, and who can own the metrics and benefits after go-live.", "bullets": ["Microsoft-centered landscape: Microsoft 365, Azure, Dynamics and Teams favor Fabric + Power BI", "Heterogeneous landscape: multiple ERPs, legacy databases and mixed SaaS favor Qlik + Talend", "If governance is immature, start with data ownership before dashboards", "Fit factors: data gravity, process ownership, training capacity, security model, cost model, benefit tracking"], "visuals": ["previous_dense_slide_reference/slide-19.png"], "course": ["Unit 2 ERP Business Case: benefits, costs, risks, CSFs, TCO and benefit owners.", "Unit 6 Scope Levers: organization, process, function, interface, data conversion, reports/forms and infrastructure."], "img": "assets/slides/slide-20.png"}, {"no": 21, "id": "Slide 21", "title": "Business Case and Benefit Owners", "section": "ERP framework", "thesis": "Benefits must be owned by named roles and measured through process KPIs.", "zh": "Unit 2 说明业务论证需要收益和负责人。如果没人负责收益，BI 平台就只是报表成本，而不是 ERP 价值驱动。", "en": "Unit 2 says a business case needs benefits and owners. If nobody owns the benefit, the BI platform becomes a reporting expense rather than an ERP value driver.", "bullets": ["Finance controller owns close-cycle and margin-reporting benefits", "Procurement lead owns supplier visibility and exception-response benefits", "Supply chain planner owns inventory accuracy and delay-response benefits", "Sales operations owner owns channel performance and demand visibility benefits", "Data governance lead owns certified metrics, lineage and quality exceptions", "KPIs: cycle time, adoption rate, certified report usage, data-quality incident reduction"], "visuals": ["previous_dense_slide_reference/slide-20.png"], "course": ["Unit 2 ERP Business Case: benefits, costs, risks, CSFs, TCO and benefit owners."], "img": "assets/slides/slide-21.png"}, {"no": 22, "id": "Slide 22", "title": "Value Chain Visibility and Decision Latency Reduction", "section": "ERP framework", "thesis": "ABI platforms create value when they reduce lag between operational signals and process-owner decisions.", "zh": "Unit 4 关注价值链流程。分析工具的价值在于把运营信号连接到更快的跨价值链决策。", "en": "Unit 4 focuses on value-chain processes. Analytics matters when it connects operational signals to faster decisions across the value chain.", "bullets": ["Visibility across supplier, inventory, sales, finance and service nodes", "Decision latency: time from signal to investigation to approved action", "Microsoft path: faster collaboration inside familiar Microsoft work environment", "Qlik path: stronger discovery where signals sit across many systems", "Measurement: exception response time, forecast accuracy, cycle time and service level"], "visuals": ["charts_mcp/mcp_02_data_to_decision.png", "previous_dense_slide_reference/slide-22.png"], "course": ["Unit 4 Value Chain: ERP/AI tools should improve end-to-end process visibility and action."], "img": "assets/slides/slide-22.png"}, {"no": 23, "id": "Slide 23", "title": "Change Management and User Adoption Design", "section": "ERP framework", "thesis": "Adoption needs sponsor commitment, super users, training path, resistance management and KPI sign-off.", "zh": "Unit 5 强调变革管理是关键。即使平台很强，如果用户不信任指标或不理解工作方式变化，也会失败。", "en": "Unit 5 reminds us that change management is key. Even a strong platform fails if users do not trust the metrics or understand how their work changes.", "bullets": ["Sponsor: executive owner explains why the analytics change matters", "Super users: finance, procurement, supply chain and sales champions support peers", "Training path: role-based learning for viewers, analysts, data stewards and owners", "Resistance points: spreadsheet habits, metric disputes, fear of monitoring, tool fatigue", "KPI sign-off: benefit owners approve definitions before dashboards scale"], "visuals": ["previous_dense_slide_reference/slide-10.png"], "course": ["Unit 5 Change Management: sponsor commitment, super users, training and user resistance.", "Unit 2 ERP Business Case: benefits, costs, risks, CSFs, TCO and benefit owners."], "img": "assets/slides/slide-23.png"}, {"no": 24, "id": "Slide 24", "title": "Data Quality, Governance, and KPI Ownership", "section": "ERP framework", "thesis": "Trusted analytics requires certified metrics, data lineage, access control and approval workflow.", "zh": "数据质量和治理决定用户是否信任平台。问题不只是由谁做仪表板，而是谁负责定义和审批。", "en": "Data quality and governance decide whether people trust the platform. The issue is not only who builds dashboards, but who owns definitions and approvals.", "bullets": ["Certified metrics: KPI dictionary with owners and calculation logic", "Lineage: trace source, transformation and refresh history", "Access control: role-based access for sensitive finance, HR, supplier and customer data", "Approval workflow: process owners approve key reports and AI-supported recommendations", "Governance body: steering committee resolves conflicts and prevents report sprawl"], "visuals": ["charts_mcp/mcp_03_governance_org.png", "previous_dense_slide_reference/slide-23.png"], "course": ["Unit 6 Data Quality/Governance: steering committee, ownership, certified metrics, lineage and access control."], "img": "assets/slides/slide-24.png"}, {"no": 25, "id": "Slide 25", "title": "Scope Levers and Implementation Control", "section": "ERP framework", "thesis": "Reports, interfaces and data conversion are ERP scope levers, not harmless extras.", "zh": "Unit 6 很重要，因为 BI 项目会通过报表、接口和数据清洗引发范围蔓延。这些都必须像 ERP 范围一样管理。", "en": "Unit 6 is important because BI projects can create scope creep through reports, interfaces and data cleansing. These must be controlled like other ERP scope items.", "bullets": ["Organization scope: affected departments, regions and user groups", "Business process scope: decisions and workflows changed by analytics", "Functional scope: analytics functions, AI features, alerts and automations", "Interface scope: ERP, CRM, warehouse, SaaS and external data connections", "Data conversion/cleansing scope: migration, master data, quality rules and ownership", "Reports/forms scope: official dashboards vs local reports"], "visuals": ["previous_dense_slide_reference/slide-25.png"], "course": ["Unit 6 Scope Levers: organization, process, function, interface, data conversion, reports/forms and infrastructure."], "img": "assets/slides/slide-25.png"}, {"no": 26, "id": "Slide 26", "title": "Real Case: Marks & Spencer and Microsoft", "section": "Case", "thesis": "The M&S Microsoft case illustrates BI-enabled retail visibility, but it should not prove that Microsoft always beats Qlik.", "zh": "M&S 案例展示共享数据和 Power BI 如何支持零售决策可视性。但它只是说明性案例，不能替代适配比较。", "en": "The M&S case shows how shared data and Power BI can support retail decision visibility. However, the case is illustrative; it does not remove the need to compare fit.", "bullets": ["Case platform: Azure Synapse + Power BI", "Business context: retail omnichannel visibility and shared evidence", "ERP issue: scattered retail and operational signals", "BI role: governed data and Power BI views support faster comparison and decision-making", "Transfer limit: this is a Microsoft case, so it illustrates BI value rather than universal vendor superiority"], "visuals": ["previous_dense_slide_reference/slide-21.png", "online_downloaded/microsoft_powerbi_gartner.png"], "course": ["Unit 2 ERP Business Case: benefits, costs, risks, CSFs, TCO and benefit owners.", "Unit 4 Value Chain: ERP/AI tools should improve end-to-end process visibility and action."], "img": "assets/slides/slide-26.png"}, {"no": 27, "id": "Slide 27", "title": "Case Lessons and Where Qlik Would Fit Better", "section": "Case + conclusion", "thesis": "M&S teaches shared evidence and decision speed; Qlik would be stronger where the main problem is fragmented heterogeneous data.", "zh": "案例告诉我们共享证据很重要，但最终建议仍是有条件的。如果数据分散且质量是核心问题，Qlik 可能更合适。", "en": "The case gives us lessons about shared evidence, but the final recommendation remains conditional. If data is fragmented and quality is the core issue, Qlik may be the better path.", "bullets": ["Case lesson 1: shared evidence reduces spreadsheet fragmentation", "Case lesson 2: cross-functional visibility supports faster retail decisions", "Case lesson 3: adoption and ownership still matter more than dashboard appearance", "Qlik-fit scenario: multiple ERP systems, legacy databases, unclear lineage and heavy data-quality issues", "Decision rule: Microsoft for standardization; Qlik for heterogeneous integration; pilot before scale"], "visuals": ["previous_dense_slide_reference/slide-27.png", "charts_mcp/mcp_05_implementation_roadmap.png"], "course": ["Unit 2 ERP Business Case: benefits, costs, risks, CSFs, TCO and benefit owners.", "Unit 4 Value Chain: ERP/AI tools should improve end-to-end process visibility and action."], "img": "assets/slides/slide-27.png"}, {"no": 28, "id": "Slide 28", "title": "Final Recommendation and Q&A Triggers", "section": "Close", "thesis": "Both vendors are credible; choose by data gravity, ownership, governance, adoption and benefit measurement.", "zh": "最终答案不是一个通用赢家。Microsoft 和 Qlik 都强，但更好的 ERP 选择取决于企业数据格局、流程责任和治理成熟度。", "en": "The final answer is not one universal winner. Microsoft and Qlik are both strong, but the better ERP choice depends on the organization’s data landscape, process ownership and governance maturity.", "bullets": ["Choose Microsoft when ecosystem standardization dominates", "Choose Qlik when heterogeneous integration and data quality dominate", "Pilot before scale: prove value, adoption and governance in one value-chain use case", "Q&A: where is data gravity?", "Q&A: who owns KPI definitions and benefits?", "Q&A: where should AI stop?"], "visuals": ["previous_dense_slide_reference/slide-28.png"], "course": ["Unit 2 ERP Business Case: benefits, costs, risks, CSFs, TCO and benefit owners.", "Unit 6 Scope Levers: organization, process, function, interface, data conversion, reports/forms and infrastructure."], "img": "assets/slides/slide-28.png"}];
+
+    document.querySelector("#reportExplainerGrid").innerHTML = reportExplainers.map((r) => `
+      <article class="simple-card"><b>${r[0]}</b><p>${r[1]}</p></article>
+    `).join("");
+
+    document.querySelector("#reportMap").innerHTML = reportSections.map((r, i) => `
+      <article class="report-card fade" style="--i:${Math.min(i, 9)}">
+        <div class="no">${r.no}</div>
+        <h3>${r.title}</h3>
+        <p><strong>报告在说什么：</strong>${r.plain}</p>
+        <p class="why"><strong>为什么重要：</strong>${r.why}</p>
+        <span class="ppt-ref">对应：${r.ppt}</span>
+      </article>
+    `).join("");
+
+    document.querySelector("#conceptGrid").innerHTML = concepts.map((c, i) => `
+      <article class="concept fade" style="--i:${Math.min(i, 9)}">
+        <h3>${c.name}</h3>
+        <div class="en">${c.en}</div>
+        <p><strong>中文解释：</strong>${c.plain}</p>
+        <p><strong>ERP 小例子：</strong>${c.example}</p>
+        <span class="ppt-ref">${c.ppt}</span>
+      </article>
+    `).join("");
+
+    document.querySelector("#productGrid").innerHTML = products.map((p) => `
+      <article class="product ${p.key}">
+        <div class="product-header">
+          <div><h3>${p.title}</h3><p>${p.subtitle}</p></div>
+          <span class="badge">${p.badge}</span>
+        </div>
+        <img src="${p.image}" alt="${p.title}">
+        <div class="point-list">
+          ${p.points.map(row => `<div class="point"><b>${row[0]}</b><span>${row[1]}</span></div>`).join("")}
+        </div>
+        <p><strong>风险提醒：</strong>${p.risks}</p>
+        <span class="ppt-ref">${p.slides}</span>
+      </article>
+    `).join("");
+
+    document.querySelector("#questionGrid").innerHTML = questions.map((q) => `
+      <article class="question"><b>${q[0]}</b><p><strong>${q[1]}:</strong> ${q[2]}</p></article>
+    `).join("");
+
+    const tabs = document.querySelector("#tabs");
+    const grid = document.querySelector("#slideGrid");
+    const groups = ["All", ...Array.from(new Set(slides.map(s => s.section)))];
+    let active = "All";
+    function renderTabs() {
+      tabs.innerHTML = groups.map(g => `<button class="tab ${g === active ? "active" : ""}" data-group="${g}">${g}</button>`).join("");
+      tabs.querySelectorAll("button").forEach(btn => btn.addEventListener("click", () => {
+        active = btn.dataset.group;
+        renderTabs();
+        renderSlides();
+      }));
+    }
+    function renderSlides() {
+      const list = active === "All" ? slides : slides.filter(s => s.section === active);
+      grid.innerHTML = list.map((s, i) => `
+        <article class="slide-card fade" style="--i:${Math.min(i, 9)}">
+          <img src="${s.img}" alt="${s.title}">
+          <div class="slide-body">
+            <b>${s.id} · ${s.section}</b>
+            <h4>${s.title}</h4>
+            <p>${s.thesis}</p>
+            <p><strong>中文讲法：</strong>${s.zh}</p>
+            <div class="visual-list">${s.visuals.map(v => `<span>${v.split('/').pop()}</span>`).join("")}</div>
+          </div>
+        </article>
+      `).join("");
+    }
+    renderTabs();
+    renderSlides();
+  </script>
+</body>
+</html>

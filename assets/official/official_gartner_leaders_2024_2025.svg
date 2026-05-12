@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="560" viewBox="0 0 980 560">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="40" y="48" font-family="Arial, Microsoft YaHei, sans-serif" font-size="26" font-weight="700" fill="#111827" text-anchor="start">Official Gartner ABI Leaders: 2024 vs 2025</text>
+<text x="40" y="78" font-family="Arial, Microsoft YaHei, sans-serif" font-size="13" font-weight="400" fill="#4b5563" text-anchor="start">Data: Gartner ABI document pages and official vendor announcements. 1 = listed as Leader; 0 = not listed as Leader.</text>
+<text x="298.0" y="105" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" font-weight="700" fill="#111827" text-anchor="middle">2024</text>
+<text x="389.2" y="105" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" font-weight="700" fill="#111827" text-anchor="middle">2025</text>
+<text x="40" y="153" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" font-weight="700" fill="#111827" text-anchor="start">Microsoft</text>
+<text x="150" y="153" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#4b5563" text-anchor="start">Power BI / Fabric</text>
+<rect x="260.0" y="120" width="58" height="38" rx="4" fill="#2563eb"/>
+<text x="289.0" y="145" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Leader</text>
+<rect x="351.2" y="120" width="58" height="38" rx="4" fill="#2563eb"/>
+<text x="380.2" y="145" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Leader</text>
+<text x="40" y="211" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" font-weight="700" fill="#111827" text-anchor="start">Salesforce</text>
+<text x="150" y="211" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#4b5563" text-anchor="start">Tableau</text>
+<rect x="260.0" y="178" width="58" height="38" rx="4" fill="#2563eb"/>
+<text x="289.0" y="203" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Leader</text>
+<rect x="351.2" y="178" width="58" height="38" rx="4" fill="#2563eb"/>
+<text x="380.2" y="203" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Leader</text>
+<text x="40" y="269" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" font-weight="700" fill="#111827" text-anchor="start">Google</text>
+<text x="150" y="269" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#4b5563" text-anchor="start">Looker</text>
+<rect x="260.0" y="236" width="58" height="38" rx="4" fill="#2563eb"/>
+<text x="289.0" y="261" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Leader</text>
+<rect x="351.2" y="236" width="58" height="38" rx="4" fill="#2563eb"/>
+<text x="380.2" y="261" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Leader</text>
+<text x="40" y="327" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" font-weight="700" fill="#111827" text-anchor="start">Qlik</text>
+<text x="150" y="327" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#4b5563" text-anchor="start">Qlik Cloud Analytics</text>
+<rect x="260.0" y="294" width="58" height="38" rx="4" fill="#2563eb"/>
+<text x="289.0" y="319" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Leader</text>
+<rect x="351.2" y="294" width="58" height="38" rx="4" fill="#2563eb"/>
+<text x="380.2" y="319" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Leader</text>
+<text x="40" y="385" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" font-weight="700" fill="#111827" text-anchor="start">Oracle</text>
+<text x="150" y="385" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#4b5563" text-anchor="start">Oracle Analytics</text>
+<rect x="260.0" y="352" width="58" height="38" rx="4" fill="#2563eb"/>
+<text x="289.0" y="377" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Leader</text>
+<rect x="351.2" y="352" width="58" height="38" rx="4" fill="#2563eb"/>
+<text x="380.2" y="377" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Leader</text>
+<text x="40" y="443" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" font-weight="700" fill="#111827" text-anchor="start">ThoughtSpot</text>
+<text x="150" y="443" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#4b5563" text-anchor="start">ThoughtSpot Analytics</text>
+<rect x="260.0" y="410" width="58" height="38" rx="4" fill="#2563eb"/>
+<text x="289.0" y="435" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Leader</text>
+<rect x="351.2" y="410" width="58" height="38" rx="4" fill="#2563eb"/>
+<text x="380.2" y="435" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Leader</text>
+<rect x="40" y="480" width="900" height="1" fill="#e5e7eb"/>
+<text x="40" y="510" font-family="Arial, Microsoft YaHei, sans-serif" font-size="13" font-weight="400" fill="#374151" text-anchor="start">Result: the public official evidence supports a stable Leaders group across 2024 and 2025; the analysis should focus on capability and ERP fit, not invented scores.</text>
+</svg>
